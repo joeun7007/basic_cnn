@@ -170,13 +170,7 @@ EPOCHS = 5
 import math
 
 for epoch in range(EPOCHS):
-    train_loss.reset_states()
-    train_accuracy.reset_states()
-    test_loss.reset_states()
-    test_accuracy.reset_states()
-    step = 0
     for images, labels in train_dataset:
-        step += 1
         train_step(images, labels)
         print('에포크: {}, 손실: {}, 정확도: {},'.format(epoch + 1, train_loss.result(), train_accuracy.result()*100))
 
@@ -185,7 +179,5 @@ for epoch in range(EPOCHS):
 
     template = '에포크: {}, 손실: {}, 정확도: {}, 테스트 손실: {}, 테스트 정확도: {}'
     print(template.format(epoch+1,
-                         train_loss.result(),
-                         train_accuracy.result()*100,
                          test_loss.result(),
                          test_accuracy.result()*100))
